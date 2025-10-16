@@ -106,7 +106,7 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <header className="border-b border-border sticky top-0 bg-background/95 backdrop-blur-sm z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -182,7 +182,7 @@ export default function Index() {
           {filteredBeats.map(beat => (
             <Card key={beat.id} className="bg-card border-border overflow-hidden hover-scale group">
               <div className="relative h-48 overflow-hidden">
-                <img src="https://cdn.poehali.dev/files/7e2ea81e-b2ae-48c4-9b32-43cbccd65fc6.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-black" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-32 h-16">
                     <svg viewBox="0 0 100 40" className={currentlyPlaying === beat.id ? 'animate-pulse-slow' : ''}>
@@ -255,7 +255,7 @@ export default function Index() {
           <div className="fixed bottom-0 left-0 right-0 bg-card/95 backdrop-blur-lg border-t border-border p-4 z-50">
             <div className="container mx-auto">
               <div className="flex items-center gap-4">
-                <img src="https://cdn.poehali.dev/files/7e2ea81e-b2ae-48c4-9b32-43cbccd65fc6.jpg" alt="" className="w-16 h-16 rounded-lg flex-shrink-0 object-cover" />
+                <div className="w-16 h-16 rounded-lg flex-shrink-0 bg-black" />
                 <div className="flex-1 min-w-0">
                   <h4 className="font-semibold truncate">
                     {mockBeats.find(b => b.id === currentlyPlaying)?.title}

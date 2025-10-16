@@ -66,10 +66,8 @@
   }
 
   body {
-    @apply text-foreground;
+    @apply bg-background text-foreground;
     font-family: "Inter", sans-serif;
-    background: url("https://cdn.poehali.dev/projects/67707651-96df-4c27-82c0-cc63ab3029f2/files/51a0eb55-54d4-46b2-ae6f-9db1e3f3806b.jpg")
-      center/cover fixed;
   }
 
   h1,
