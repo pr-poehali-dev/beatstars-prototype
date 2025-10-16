@@ -66,8 +66,10 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
     font-family: "Inter", sans-serif;
+    background: url("https://cdn.poehali.dev/files/7e2ea81e-b2ae-48c4-9b32-43cbccd65fc6.jpg")
+      center/cover fixed;
   }
 
   h1,
@@ -82,16 +84,11 @@
 
 @layer utilities {
   .gradient-primary {
-    background: linear-gradient(
-      135deg,
-      var(--gradient-pink) 0%,
-      var(--gradient-purple) 50%,
-      var(--gradient-blue) 100%
-    );
+    background: #000;
   }
 
   .gradient-card {
-    background: linear-gradient(135deg, #ff006e 0%, #8338ec 50%, #3a86ff 100%);
+    background: #000;
   }
 
   .hover-scale {

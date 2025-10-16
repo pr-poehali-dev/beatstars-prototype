@@ -106,15 +106,15 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       <header className="border-b border-border sticky top-0 bg-background/95 backdrop-blur-sm z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 gradient-primary rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center">
                 <Icon name="Music" className="text-white" size={24} />
               </div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-[#FF006E] via-[#8338EC] to-[#3A86FF] bg-clip-text text-transparent">
+              <h1 className="text-2xl font-bold text-white">
                 BEATVARD
               </h1>
             </div>
@@ -166,8 +166,8 @@ export default function Index() {
                   variant={selectedTags.includes(tag) ? "default" : "outline"}
                   className={`cursor-pointer hover-scale ${
                     selectedTags.includes(tag) 
-                      ? 'bg-gradient-to-r from-[#FF006E] to-[#8338EC] text-white border-0' 
-                      : 'hover:border-primary'
+                      ? 'bg-black text-white border-white' 
+                      : 'hover:border-white border-white/50 text-white'
                   }`}
                   onClick={() => toggleTag(tag)}
                 >
@@ -182,7 +182,7 @@ export default function Index() {
           {filteredBeats.map(beat => (
             <Card key={beat.id} className="bg-card border-border overflow-hidden hover-scale group">
               <div className="relative h-48 overflow-hidden">
-                <div className="absolute inset-0 gradient-card opacity-90" />
+                <img src="https://cdn.poehali.dev/files/7e2ea81e-b2ae-48c4-9b32-43cbccd65fc6.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-32 h-16">
                     <svg viewBox="0 0 100 40" className={currentlyPlaying === beat.id ? 'animate-pulse-slow' : ''}>
@@ -229,7 +229,7 @@ export default function Index() {
                 </div>
                 
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold bg-gradient-to-r from-[#FF006E] to-[#8338EC] bg-clip-text text-transparent">
+                  <span className="text-2xl font-bold text-white">
                     ₽{beat.price.toLocaleString()}
                   </span>
                   <div className="flex gap-2">
@@ -237,7 +237,7 @@ export default function Index() {
                       <Icon name="FileText" size={18} />
                     </Button>
                     <Button 
-                      className="gradient-primary hover:opacity-90"
+                      className="bg-black hover:bg-black/80 text-white"
                       onClick={() => addToCart(beat.id)}
                       disabled={cart.includes(beat.id)}
                     >
@@ -255,7 +255,7 @@ export default function Index() {
           <div className="fixed bottom-0 left-0 right-0 bg-card/95 backdrop-blur-lg border-t border-border p-4 z-50">
             <div className="container mx-auto">
               <div className="flex items-center gap-4">
-                <div className="w-16 h-16 gradient-card rounded-lg flex-shrink-0" />
+                <img src="https://cdn.poehali.dev/files/7e2ea81e-b2ae-48c4-9b32-43cbccd65fc6.jpg" alt="" className="w-16 h-16 rounded-lg flex-shrink-0 object-cover" />
                 <div className="flex-1 min-w-0">
                   <h4 className="font-semibold truncate">
                     {mockBeats.find(b => b.id === currentlyPlaying)?.title}
@@ -270,7 +270,7 @@ export default function Index() {
                   </Button>
                   <Button 
                     size="icon" 
-                    className="w-12 h-12 gradient-primary"
+                    className="w-12 h-12 bg-black hover:bg-black/80"
                     onClick={() => setCurrentlyPlaying(null)}
                   >
                     <Icon name="Pause" size={24} />
