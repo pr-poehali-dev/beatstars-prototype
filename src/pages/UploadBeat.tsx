@@ -41,14 +41,71 @@ export default function UploadBeat() {
     }
   };
 
+  const fileToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = error => reject(error);
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setUploading(true);
 
-    setTimeout(() => {
+    try {
+      if (!audioFile) {
+        alert('Выберите аудио файл');
+        setUploading(false);
+        return;
+      }
+
+      const audioBase64 = await fileToBase64(audioFile);
+      const coverBase64 = coverFile ? await fileToBase64(coverFile) : null;
+
+      const payload = {
+        title: formData.title,
+        bpm: parseInt(formData.bpm),
+        price: parseInt(formData.price),
+        description: formData.description,
+        tags: selectedTags,
+        audioFile: {
+          name: audioFile.name,
+          data: audioBase64,
+          type: audioFile.type
+        },
+        ...(coverBase64 && coverFile ? {
+          coverFile: {
+            name: coverFile.name,
+            data: coverBase64,
+            type: coverFile.type
+          }
+        } : {})
+      };
+
+      const response = await fetch('https://functions.poehali.dev/3fdbf1b4-1176-4abb-add6-a01aed3b0982', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        alert(`Бит "${result.metadata.title}" успешно загружен!`);
+        navigate('/profile');
+      } else {
+        alert(`Ошибка: ${result.error || 'Не удалось загрузить бит'}`);
+      }
+    } catch (error) {
+      console.error('Upload error:', error);
+      alert('Произошла ошибка при загрузке');
+    } finally {
       setUploading(false);
-      navigate('/profile');
-    }, 2000);
+    }
   };
 
   return (

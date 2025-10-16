@@ -1,0 +1,55 @@
+{
+  "tests": [
+    {
+      "name": "Upload beat with valid data",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "X-User-Id": "user123"
+      },
+      "body": {
+        "title": "Test Beat",
+        "bpm": 140,
+        "price": 2500,
+        "description": "Test description",
+        "tags": ["Trap", "Dark"],
+        "audioFile": {
+          "name": "test.mp3",
+          "data": "dGVzdCBhdWRpbyBkYXRh",
+          "type": "audio/mpeg"
+        }
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true,
+        "beatId": "string",
+        "metadata": {
+          "title": "Test Beat",
+          "bpm": 140,
+          "price": 2500
+        }
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Upload beat with missing required fields",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "title": "Test Beat"
+      },
+      "expectedStatus": 400,
+      "expectedBody": {
+        "error": "string"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Handle OPTIONS for CORS",
+      "method": "OPTIONS",
+      "expectedStatus": 200
+    }
+  ]
+}
