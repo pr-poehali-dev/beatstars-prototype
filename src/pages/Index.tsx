@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -131,6 +132,12 @@ export default function Index() {
                 <Icon name="User" size={18} className="mr-2" />
                 Продюсеры
               </Button>
+              <Link to="/profile">
+                <Button variant="ghost" className="text-foreground hover:text-primary">
+                  <Icon name="UserCircle" size={18} className="mr-2" />
+                  Профиль
+                </Button>
+              </Link>
               <Button variant="ghost" className="relative">
                 <Icon name="ShoppingCart" size={20} />
                 {cart.length > 0 && (
