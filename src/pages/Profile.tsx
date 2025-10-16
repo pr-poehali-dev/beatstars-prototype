@@ -240,10 +240,12 @@ export default function Profile() {
                     </div>
                   </Card>
                 ))}
-                <Button className="w-full bg-black hover:bg-black/80 text-white">
-                  <Icon name="Upload" size={18} className="mr-2" />
-                  Загрузить новый бит
-                </Button>
+                <Link to="/upload">
+                  <Button className="w-full bg-black hover:bg-black/80 text-white">
+                    <Icon name="Upload" size={18} className="mr-2" />
+                    Загрузить новый бит
+                  </Button>
+                </Link>
               </div>
             </TabsContent>
 
