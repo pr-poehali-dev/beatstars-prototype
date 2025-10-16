@@ -115,7 +115,7 @@ export default function Index() {
                 <Icon name="Music" className="text-white" size={24} />
               </div>
               <h1 className="text-2xl font-bold bg-gradient-to-r from-[#FF006E] via-[#8338EC] to-[#3A86FF] bg-clip-text text-transparent">
-                BEAT MARKETPLACE
+                BEATVARD
               </h1>
             </div>
             <nav className="flex items-center gap-6">
